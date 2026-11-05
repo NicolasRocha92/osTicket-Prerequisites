@@ -71,11 +71,13 @@ These included the IIS-related components, PHP, MySQL, and osTicket application 
 
 ![Step 4 - Installation Files](step-04.png)
 
-## Step 5: Configure Internet Information Services (IIS)
+## Step 5: Verify the MySQL Database Service
 
-Configured Internet Information Services (IIS) to provide the web server environment for osTicket.
+Opened Windows Services and confirmed that the MySQL database service was running.
 
-IIS allows the help desk application to be accessed through a web browser.
+MySQL provides the database services required for osTicket to store tickets, user accounts, and application settings.
+
+![Step 5 - MySQL Database Service](step-05.png)
 
 ![Step 5 - IIS Configuration](step-05.png)
 
