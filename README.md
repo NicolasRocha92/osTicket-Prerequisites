@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket Logo" width="300"/>
+</p>
 
 # osTicket – Prerequisites and Installation
 
