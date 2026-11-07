@@ -79,8 +79,6 @@ MySQL provides the database services required for osTicket to store tickets, use
 
 ![Step 5 - MySQL Database Service](step-05.png)
 
-![Step 5 - IIS Configuration](step-05.png)
-
 ## Step 6: Configure PHP Manager
 
 Used PHP Manager to configure PHP integration with IIS.
