@@ -30,13 +30,13 @@ Use PHP and MySQL versions supported by your chosen osTicket release. Installati
 
 Create or start a Windows VM in the **Azure portal**. Confirm it is running and that Remote Desktop access is configured.
 
-!\[Azure VM in the Azure portal](step-01.png)
+![Azure VM in the Azure portal](step-01.png)
 
 ### Step 2 — Connect to Windows
 
 Connect to the VM with **Remote Desktop** using an administrator account. Open Command Prompt and run `whoami` to confirm the signed-in account.
 
-!\[Command Prompt on the VM](step-02.png)
+![Command Prompt on the VM](step-02.png)
 
 ### Step 3 — Enable IIS and CGI
 
@@ -45,7 +45,7 @@ Connect to the VM with **Remote Desktop** using an administrator account. Open C
 3. Under **World Wide Web Services → Application Development Features**, enable **CGI** (which provides FastCGI support).
 4. Apply the changes. Open `http://localhost` on the VM to confirm IIS responds.
 
-!\[Windows Features with IIS components](step-03.png)
+![Windows Features with IIS components](step-03.png)
 
 ### Step 4 — Prepare PHP and the Supporting Software
 
@@ -55,13 +55,13 @@ Connect to the VM with **Remote Desktop** using an administrator account. Open C
 
 Keep your MySQL administrator credentials secure; they will be used to create the application database.
 
-!\[PHP installation files in File Explorer](step-04.png)
+![PHP installation files in File Explorer](step-04.png)
 
 ### Step 5 — Verify the MySQL Service
 
 Open **Services** (`services.msc`), locate the MySQL service, and confirm its status is **Running**. Start the service if necessary.
 
-!\[MySQL service in Windows Services](step-05.png)
+![MySQL service in Windows Services](step-05.png)
 
 ### Step 6 — Register PHP with IIS
 
@@ -77,7 +77,7 @@ Open **Services** (`services.msc`), locate the MySQL service, and confirm its st
 Select **OK**, then **Yes** if IIS prompts you to create the FastCGI application.
 5. In **PHP Manager**, confirm the registered PHP version appears without configuration warnings. Browse to `http://localhost/osTicket` after deploying the files in Step 7; the PHP-based installer should load instead of downloading a `.php` file or returning a handler error.
 
-!\[PHP Manager in IIS](step-06.png)
+![PHP Manager in IIS](step-06.png)
 
 ### Step 7 — Copy osTicket into the IIS Web Directory
 
@@ -85,13 +85,13 @@ Select **OK**, then **Yes** if IIS prompts you to create the FastCGI application
 2. Copy the **contents** of the osTicket package's `upload` folder into that directory. The directory should contain `index.php` and the `include` folder, not another nested `upload` folder.
 3. Open `http://localhost/osTicket` in the VM browser.
 
-!\[osTicket files in the IIS web directory](step-07.png)
+![osTicket files in the IIS web directory](step-07.png)
 
 ### Step 8 — Check Installer Requirements
 
 On the osTicket installer page, review the prerequisite checks. Identify any required PHP extensions that are missing or disabled.
 
-!\[Initial osTicket prerequisite check](step-08.png)
+![Initial osTicket prerequisite check](step-08.png)
 
 ### Step 9 — Enable Required PHP Extensions
 
@@ -100,13 +100,13 @@ On the osTicket installer page, review the prerequisite checks. Identify any req
 3. In PHP Manager, open **Check phpinfo()** or inspect PHP configuration to verify that the active `php.ini` and extension directory are correct. If an extension cannot be enabled, confirm its DLL is present in the PHP `ext` folder.
 4. Recycle the site's application pool in IIS Manager to reload PHP.
 
-!\[PHP extensions in PHP Manager](step-09.png)
+![PHP extensions in PHP Manager](step-09.png)
 
 ### Step 10 — Confirm the Requirements Pass
 
 Refresh `http://localhost/osTicket`. Confirm the required checks pass, then select **Continue**.
 
-!\[Updated osTicket prerequisite check](step-10.png)
+![Updated osTicket prerequisite check](step-10.png)
 
 ### Step 11 — Create and Temporarily Unlock the Configuration File
 
@@ -116,13 +116,13 @@ Refresh `http://localhost/osTicket`. Confirm the required checks pass, then sele
 4. Right-click `ost-config.php` → **Properties → Security → Edit → Add**. Enter `IIS AppPool\\<PoolName>` (for example, `IIS AppPool\\DefaultAppPool`), select **Check Names**, and grant **Modify** permission temporarily. This assumes the pool uses its default **ApplicationPoolIdentity**; otherwise grant access to the identity actually configured for that pool.
 5. After successful installation, remove the temporary Modify permission. Do not remove access needed for IIS to read the file.
 
-!\[Configuration-file security permissions](step-11.png)
+![Configuration-file security permissions](step-11.png)
 
 ### Step 12 — Review the osTicket Installation Form
 
 Open **osTicket Basic Installation**. The form requests help desk details, an administrator account, and MySQL connection information. Prepare the database in Step 13 before submitting the form.
 
-!\[osTicket Basic Installation form](step-12.png)
+![osTicket Basic Installation form](step-12.png)
 
 ### Step 13 — Create the Database and Install osTicket
 
@@ -138,7 +138,7 @@ Open **osTicket Basic Installation**. The form requests help desk details, an ad
 
 3. In HeidiSQL, refresh the database list and confirm that `osticket` appears.
 
-!\[Database created in HeidiSQL](step-13.png)
+![Database created in HeidiSQL](step-13.png)
 
 4. Return to the osTicket installation form. Enter the help desk name and email address, and create the administrator account.
 5. Enter **MySQL Hostname:** `localhost`, **MySQL Database:** `osticket`, **MySQL Username:** `osticket\_user`, and the password from the SQL command.
@@ -150,7 +150,7 @@ Open **osTicket Basic Installation**. The form requests help desk details, an ad
 
 Confirm the installer displays **Congratulations**. Then delete the `setup` directory from the osTicket web folder and remove the temporary **Modify** permission from `include/ost-config.php`, retaining the read access required by IIS. Test the help desk and staff sign-in pages.
 
-!\[Successful osTicket installation](step-14.png)
+![Successful osTicket installation](step-14.png)
 
 ## Project Outcome
 
